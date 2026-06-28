@@ -1,3 +1,13 @@
+import type { StaticImageData } from "next/image";
+import constructionImage from "@/images/construction.png";
+import engineeringImage from "@/images/engineering.png";
+import industrialMaterialsImage from "@/images/industrialmaterial.png";
+import industrialScrapImage from "@/images/industrialscrap.png";
+import customSourcingImage from "@/images/industrialsourcing.png";
+import machineryImage from "@/images/machine.png";
+import metalsAlloysImage from "@/images/metalandalloy.png";
+import packagingImage from "@/images/packing.png";
+
 export type ProductSubcategory = {
   slug: string;
   name: string;
@@ -18,6 +28,8 @@ export type ProductCategory = {
   subcategories: ProductSubcategory[];
   packing: string[];
   documentation: string[];
+  image: StaticImageData;
+  imageAlt: string;
 };
 
 const standardDocuments = [
@@ -102,6 +114,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["20 ft / 40 ft FCL", "Palletized", "Baled", "Bundled", "Loose or bulk where suitable"],
     documentation: standardDocuments,
+    image: metalsAlloysImage,
+    imageAlt: "Industrial metal coils, pipes, brass rods, copper sheets, and alloy stock",
   },
   {
     slug: "industrial-scrap-recyclable-materials",
@@ -160,6 +174,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["Baled", "Loose bulk in containers", "Big bags / jumbo bags", "20 ft / 40 ft FCL"],
     documentation: standardDocuments,
+    image: industrialScrapImage,
+    imageAlt: "Baled industrial scrap and recyclable materials in a warehouse",
   },
   {
     slug: "machinery-equipment",
@@ -218,6 +234,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["Wooden crate", "Palletized", "Containerized (20ft / 40ft)", "Flat rack for OOG cargo", "Unit-specific packing"],
     documentation: standardDocuments,
+    image: machineryImage,
+    imageAlt: "Industrial machinery, pumps, motors, and manufacturing equipment",
   },
   {
     slug: "construction-building-materials",
@@ -276,6 +294,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["Wooden crates for stone slabs", "Palletized", "Containerized (20ft / 40ft)", "Sea-worthy packing", "Carton packing for tiles"],
     documentation: standardDocuments,
+    image: constructionImage,
+    imageAlt: "Construction and building materials including cement, bricks, pipes, steel, and glass",
   },
   {
     slug: "industrial-raw-materials",
@@ -334,6 +354,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["Bales", "Big bags / jumbo bags", "Palletized", "20 ft / 40 ft FCL", "Packing as per material type"],
     documentation: standardDocuments,
+    image: industrialMaterialsImage,
+    imageAlt: "Industrial raw materials and manufacturing inputs for export sourcing",
   },
   {
     slug: "engineering-components-hardware",
@@ -392,6 +414,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["Export cartons", "Palletized", "Wooden crates for heavy parts", "20 ft / 40 ft FCL", "Custom packing per requirement"],
     documentation: standardDocuments,
+    image: engineeringImage,
+    imageAlt: "Engineering components, bearings, fasteners, and mechanical hardware",
   },
   {
     slug: "packaging-commercial-supplies",
@@ -450,6 +474,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["20 ft / 40 ft FCL", "Palletized", "Baled", "As per product specification"],
     documentation: standardDocuments,
+    image: packagingImage,
+    imageAlt: "Packaging and commercial supply materials for industrial buyers",
   },
   {
     slug: "custom-sourcing",
@@ -508,6 +534,8 @@ export const productCategories: ProductCategory[] = [
     ],
     packing: ["Determined by product", "Export packing review included", "Containerized where applicable"],
     documentation: standardDocuments,
+    image: customSourcingImage,
+    imageAlt: "Industrial sourcing and procurement coordination for custom requirements",
   },
 ];
 

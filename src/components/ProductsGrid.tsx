@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { productCategories } from "@/lib/products";
 
@@ -13,9 +14,13 @@ export default function ProductsGrid() {
           aria-label={`View ${cat.shortTitle} sourcing capability`}
         >
           <div className="product-list-media">
-            <div className="placeholder-img-block" aria-hidden="true">
-              <span className="placeholder-img-label">{cat.shortTitle}</span>
-            </div>
+            <Image
+              src={cat.image}
+              alt={cat.imageAlt}
+              fill
+              sizes="(min-width: 900px) 260px, (min-width: 640px) 50vw, 100vw"
+              className="product-list-img"
+            />
           </div>
           <div className="product-list-body">
             <span className="eyebrow">{cat.shortTitle}</span>
