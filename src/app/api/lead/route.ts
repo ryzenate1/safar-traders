@@ -5,6 +5,7 @@ import { sendLeadEmail, type LeadPayload } from "@/lib/mailer";
 // Not a substitute for a real WAF/captcha, but stops naive abuse.
 const recentSubmissions = new Map<string, number>();
 const RATE_LIMIT_WINDOW_MS = 60_000;
+const allowedSources = new Set(["rfq-wizard", "chatbot", "contact-form"]);
 
 function getClientKey(req: NextRequest) {
   return (
@@ -45,7 +46,7 @@ export async function POST(req: NextRequest) {
 
     const body = (await req.json()) as Partial<LeadPayload>;
 
-    if (!body.source) {
+    if (!body.source || !allowedSources.has(String(body.source))) {
       return NextResponse.json({ ok: false, error: "Missing source." }, { status: 400 });
     }
     if (!body.email && !body.phone) {
@@ -91,7 +92,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("Lead submission failed:", err);
     return NextResponse.json(
-      { ok: false, error: "Something went wrong sending your inquiry. Please try WhatsApp or email us directly." },
+      { ok: false, error: "Something went wrong sending your requirement. Please try WhatsApp or email us directly." },
       { status: 500 }
     );
   }

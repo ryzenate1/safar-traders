@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { productCategories } from "@/lib/products";
+import { resourceGuides } from "@/lib/resources";
 import { siteConfig } from "@/lib/site-config";
 
 const staticRoutes: MetadataRoute.Sitemap = [
@@ -20,6 +21,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
+  const resourceRoutes = resourceGuides.map((guide) => ({
+    url: `${siteConfig.url}/resources/${guide.slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 
-  return [...staticRoutes.map((route: MetadataRoute.Sitemap[number]) => ({ ...route, lastModified })), ...capabilityRoutes];
+  return [
+    ...staticRoutes.map((route: MetadataRoute.Sitemap[number]) => ({ ...route, lastModified })),
+    ...capabilityRoutes,
+    ...resourceRoutes,
+  ];
 }

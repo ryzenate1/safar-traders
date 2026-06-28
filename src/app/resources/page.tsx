@@ -14,7 +14,7 @@ export default function ResourcesPage() {
   return (
     <>
       <PageHero
-        eyebrow="BUYER RESOURCES"
+        eyebrow="Buyer resources"
         title="Practical notes for procurement teams."
         description="Short, buyer-focused guidance on RFQ preparation, documentation, inspection, packing, and export coordination."
         breadcrumbs={[{ label: "Resources" }]}

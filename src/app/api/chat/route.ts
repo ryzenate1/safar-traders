@@ -8,37 +8,84 @@ import { NextRequest, NextResponse } from "next/server";
  * Get a key at https://console.anthropic.com/
  */
 
-const SYSTEM_PROMPT = `You are a Sourcing & Export Assistant for Safar Exports, an international trading and export company that sources, procures, trades, and exports industrial products across multiple industries.
+const SYSTEM_PROMPT = `You are a trade and sourcing assistant for Safar Exports, a procurement and export partner for buyers of non-perishable industrial and commercial goods.
 
-Your role is to help international buyers, importers, manufacturers, traders, procurement managers, and industrial companies obtain information about our sourcing and export capabilities.
+Your role is to help buyers understand our sourcing scope and guide them toward submitting a requirement for review.
 
-PERSONALITY: Professional, polite, corporate, helpful, concise, trustworthy, internationally minded. Never use emojis.
+PERSONALITY: Professional, calm, concise, trustworthy. Never use emojis.
 
-CATEGORIES WE SOURCE & EXPORT: Ferrous and non-ferrous metals, industrial scrap, plastic materials, cardboard & paper, industrial machinery, heavy equipment, manufacturing tools, mechanical components, industrial raw materials, secondary materials, and production equipment. The business is modular — if a buyer asks about an industrial category not listed here, respond that we can likely source it through our supplier network and should discuss specifics via the Request a Quote form.
-SERVICES: International sourcing network, procurement support, export documentation, quality verification, logistics and shipment coordination, global supplier relationships.
+WHAT WE DO: We coordinate supplier sourcing, procurement, quotation preparation, export documentation, and supply handling across multiple product categories — metals, machinery and equipment, industrial materials (plastics, paper, packaging, rubber), and custom sourcing requirements. We do not deal with food, fresh produce, or any perishable goods.
 
-DO NOT position the company as a recycling company, scrap yard, or waste management business — we are an international trading and export company. Do NOT mention or imply agricultural perishables (vegetables, fruits, fresh food, dairy, meat).
+SERVICES: Buyer-led sourcing, supplier coordination, quotation support, export documentation, logistics coordination, and single-point supply management.
 
 PRIMARY OBJECTIVES:
-1. Answer customer questions about sourcing capabilities, logistics, and business terms.
-2. Help customers clarify what industrial requirement they need sourced.
-3. Qualify potential buyers.
-4. Politely collect: company name, contact person, country, email, phone, product/category, quantity, destination port, target delivery timeline.
-5. Encourage serious inquiries to submit the Request a Quote form so the sales team can follow up.
+1. Answer questions about sourcing capabilities, trade terms, and process.
+2. Help buyers clarify and structure their requirement.
+3. Gently collect: company name, contact person, country, email or phone, product, quantity, destination, and timeline — one or two at a time.
+4. Direct serious buyers to the Request a Quote form.
 
-IMPORTANT RULES — never do these:
-- Never promise availability, pricing, delivery dates, or invent certifications/inventory.
-- Never negotiate contracts or payment terms.
-Instead say: "Please submit your requirements and our sales team will provide a formal quotation."
+IMPORTANT RULES:
+- Never promise availability, pricing, or delivery dates.
+- Never negotiate payment terms or contracts.
+- For pricing or commercial questions: “Our team will review your requirement and revert with a formal commercial proposal.”
+- For availability questions: “Please submit your requirement and we will assess sourcing feasibility.”
 
-For any pricing, contract, or payment term questions, say: "To ensure accuracy, our sales team will review your requirements and contact you with a formal commercial proposal."
+Keep replies concise (2–4 sentences). Respond in the language the buyer uses.`;
 
-If the customer signals buying intent (mentions a product category, quantity, bulk requirement, or asks about exporting to their country), begin gently collecting the qualification details above, one or two at a time — do not interrogate them with a long list at once.
+const recentChatRequests = new Map<string, number[]>();
+const CHAT_WINDOW_MS = 60_000;
+const CHAT_LIMIT = 12;
+const MAX_MESSAGES = 20;
+const MAX_MESSAGE_CHARS = 1200;
 
-Keep replies concise (2-5 sentences typically). Respond in the same language the user is writing in.`;
+function getClientKey(req: NextRequest) {
+  return (
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown"
+  );
+}
+
+function isRateLimited(clientKey: string) {
+  const now = Date.now();
+  const recent = (recentChatRequests.get(clientKey) || []).filter((time) => now - time < CHAT_WINDOW_MS);
+  if (recent.length >= CHAT_LIMIT) {
+    recentChatRequests.set(clientKey, recent);
+    return true;
+  }
+  recent.push(now);
+  recentChatRequests.set(clientKey, recent);
+  return false;
+}
+
+function normalizeMessages(value: unknown) {
+  if (!Array.isArray(value)) return null;
+  const normalized = value
+    .slice(-MAX_MESSAGES)
+    .map((message) => {
+      if (!message || typeof message !== "object") return null;
+      const item = message as { role?: unknown; content?: unknown };
+      if (item.role !== "user" && item.role !== "assistant") return null;
+      if (typeof item.content !== "string") return null;
+      const content = item.content.trim().slice(0, MAX_MESSAGE_CHARS);
+      if (!content) return null;
+      return { role: item.role, content };
+    })
+    .filter((message): message is { role: "user" | "assistant"; content: string } => Boolean(message));
+
+  return normalized.length > 0 ? normalized : null;
+}
 
 export async function POST(req: NextRequest) {
   try {
+    const clientKey = getClientKey(req);
+    if (isRateLimited(clientKey)) {
+      return NextResponse.json(
+        { ok: false, error: "Please wait a moment before sending more messages." },
+        { status: 429 }
+      );
+    }
+
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
@@ -47,11 +94,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { messages } = (await req.json()) as {
-      messages: { role: "user" | "assistant"; content: string }[];
-    };
+    const { messages } = (await req.json()) as { messages?: unknown };
+    const normalizedMessages = normalizeMessages(messages);
 
-    if (!Array.isArray(messages) || messages.length === 0) {
+    if (!normalizedMessages) {
       return NextResponse.json({ ok: false, error: "No messages provided." }, { status: 400 });
     }
 
@@ -66,7 +112,7 @@ export async function POST(req: NextRequest) {
         model: "claude-sonnet-4-6",
         max_tokens: 500,
         system: SYSTEM_PROMPT,
-        messages: messages.slice(-20),
+        messages: normalizedMessages,
       }),
     });
 

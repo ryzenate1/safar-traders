@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about our operations as an international trading and export company — our sourcing approach, operational capabilities, and commitment to transparent global trade.",
+    "Safar Exports is a trade and export partner for buyers who need reliable sourcing support across multiple non-perishable industrial and commercial product categories.",
   alternates: { canonical: `${siteConfig.url}/about` },
 };
 
@@ -35,8 +35,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About Us"
-        title="An international trading and export company built for serious buyers."
-        description="We source, procure, and export industrial products to buyers worldwide — metals, machinery, equipment, and industrial materials — with full export documentation and logistics coordination."
+        title="Built around a single idea: one partner, one process."
+        description="Safar Exports is a procurement and export partner for buyers who need sourcing coordination, documentation support, and supply handling across multiple product categories."
         breadcrumbs={[{ label: "About" }]}
       />
 
@@ -58,19 +58,19 @@ export default function AboutPage() {
                 color: "var(--color-text-primary)",
                 lineHeight: 1.2,
               }}>
-                From sourcing to shipment — end to end.
+                Sourcing, procurement, documentation — one place.
               </h2>
             </div>
             <div>
               <p style={{ fontSize: "1rem", color: "var(--color-text-secondary)", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-                We are an international trading and export company. Our operations span material sourcing,
-                procurement, quality verification, and containerized export to buyers across Asia, Europe, the
-                Middle East, and beyond.
+                Buyers should not have to manage multiple suppliers, documentation partners, and
+                shipment coordination separately. Safar Exports brings sourcing, procurement
+                coordination, documentation support, and supply handling into one clear commercial process.
               </p>
               <p style={{ fontSize: "1rem", color: "var(--color-text-secondary)", lineHeight: 1.8 }}>
-                Our sourcing capabilities cover industrial metals, machinery and equipment, plastics, paper
-                and cardboard, and general industrial materials. Each order is managed by a dedicated team
-                from first inquiry through final shipment.
+                Our scope covers non-perishable industrial and commercial goods — metals, machinery,
+                industrial materials, and custom requirements. Each requirement is reviewed for supplier
+                fit, specification, packing, and documentation before a quotation is issued.
               </p>
             </div>
           </div>
@@ -117,14 +117,14 @@ export default function AboutPage() {
           <h2 style={{
             fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
             fontWeight: 700,
-            color: "var(--color-dark-text)",
             letterSpacing: "-0.02em",
+            color: "var(--color-dark-text)",
             marginBottom: "1rem",
           }}>
-            Interested in working together?
+            Have a sourcing requirement?
           </h2>
           <p style={{ color: "var(--color-dark-muted)", marginBottom: "2rem", fontSize: "1rem", lineHeight: 1.7 }}>
-            Send us your sourcing requirement and we will review it with the right product and export context.
+            Send your product requirement, quantity, destination, timeline, and specification so we can review sourcing feasibility.
           </p>
           <Link href="/contact" className="btn btn-primary">
             Request a Quote <ArrowRight size={15} />

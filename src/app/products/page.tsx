@@ -5,9 +5,9 @@ import LeadCTA from "@/components/LeadCTA";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Industrial Sourcing Capabilities",
+  title: "Capabilities | Safar Exports",
   description:
-    "Explore Safar Exports sourcing capabilities across four categories: industrial metals, machinery and equipment, industrial materials, and general industrial sourcing.",
+    "Explore Safar Exports sourcing scope across 8 industrial and commercial categories — metals and alloys, industrial scrap, machinery, construction materials, raw materials, engineering components, packaging, and custom sourcing.",
   alternates: { canonical: `${siteConfig.url}/products` },
 };
 
@@ -15,9 +15,9 @@ export default function ProductsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Sourcing capabilities"
-        title="Industrial categories built around buyer requirements."
-        description="Safar Exports is not a catalogue business. We help procurement teams define requirements, identify suitable supply, and coordinate export for industrial products."
+        eyebrow="Capabilities"
+        title="Sourcing and supply support across 8 categories."
+        description="We work from your requirement, not a catalogue. Submit a specification and we coordinate supplier identification, quotation, documentation, and supply handling."
         breadcrumbs={[{ label: "Capabilities" }]}
       />
 

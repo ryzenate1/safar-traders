@@ -21,10 +21,11 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs, cta
       paddingTop: "8rem",
       paddingBottom: "4rem",
       borderBottom: "1px solid var(--color-border-light)",
+      textAlign: "center",
     }}>
-      <div className="container-site">
+      <div className="container-site" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav className="page-hero-breadcrumbs" style={{ display: "flex", alignItems: "center", gap: "0.375rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
+          <nav className="page-hero-breadcrumbs" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.375rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
             <Link href="/" style={{ fontSize: "0.8125rem", color: "var(--color-text-tertiary)", textDecoration: "none" }}>
               Home
             </Link>
@@ -45,16 +46,16 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs, cta
           </nav>
         )}
         {eyebrow && (
-          <span className="eyebrow" style={{ marginBottom: "0.875rem", display: "block" }}>{eyebrow}</span>
+          <span className="page-hero-eyebrow" style={{ marginBottom: "1.1rem" }}>{eyebrow}</span>
         )}
         <h1 className="page-hero-title" style={{
-          fontSize: "clamp(2rem, 4vw, 3.25rem)",
+          fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
           fontWeight: 700,
           letterSpacing: "-0.03em",
           lineHeight: 1.1,
           color: "var(--color-text-primary)",
           maxWidth: "760px",
-          marginBottom: description ? "1.25rem" : "0",
+          margin: description ? "0 auto 1.25rem" : "0 auto",
         }}>
           {title}
         </h1>
@@ -64,7 +65,7 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs, cta
             color: "var(--color-text-secondary)",
             lineHeight: 1.7,
             maxWidth: "580px",
-            marginBottom: cta ? "2rem" : "0",
+            margin: cta ? "0 auto 2rem" : "0 auto",
           }}>
             {description}
           </p>

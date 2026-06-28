@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Safar Exports",
-  tagline: "Global Industrial Sourcing & Export Partner",
+  tagline: "Trade & Export Partner",
   description:
-    "Safar Exports sources, procures, and exports industrial products for international buyers — metals, machinery, packaging materials, industrial scrap, and custom sourcing requirements.",
+    "Safar Exports is a trade and export partner for buyers sourcing non-perishable industrial and commercial goods — metals, machinery, industrial materials, and custom requirements — with procurement coordination, documentation support, and supply handling.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://safarexports.com",
   phone: "+91 73959 25908",
   phoneRaw: "+917395925908",

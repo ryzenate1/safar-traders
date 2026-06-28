@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, FileText, PackageCheck, ChevronRight } from "lucide-react";
 import { type ProductCategory, productCategories } from "@/lib/products";
@@ -152,7 +151,7 @@ export default function ProductDetailPage({ category }: Props) {
                 target="_blank" rel="noopener noreferrer"
                 className="btn btn-secondary"
               >
-                <MessageCircle size={15} aria-hidden="true" /> WhatsApp inquiry
+                <MessageCircle size={15} aria-hidden="true" /> WhatsApp requirement
               </a>
             </div>
           </div>
@@ -175,19 +174,9 @@ export default function ProductDetailPage({ category }: Props) {
             {category.subcategories.map((sub, i) => (
               <article key={sub.slug} className="subcat-section">
                 <div className="subcat-img-wrap">
-                  {sub.image ? (
-                    <Image
-                      src={sub.image}
-                      alt={sub.name}
-                      fill
-                      sizes="(min-width: 900px) 340px, 100vw"
-                      className="subcat-img"
-                    />
-                  ) : (
-                    <div className="subcat-img-placeholder" aria-hidden="true">
-                      <span>{sub.name[0]}</span>
-                    </div>
-                  )}
+                  <div className="subcat-img-placeholder" aria-hidden="true">
+                    <span>{sub.name[0]}</span>
+                  </div>
                 </div>
                 <div className="subcat-body">
                   <span className="subcat-index">0{i + 1}</span>
@@ -219,7 +208,7 @@ export default function ProductDetailPage({ category }: Props) {
             </div>
           </div>
 
-          {/* RIGHT: sticky sidebar + RFQ form */}
+          {/* RIGHT: sticky sidebar */}
           <aside className="cat-sidebar">
             <div className="cat-sidebar-sticky">
               <div className="sidebar-info-card">

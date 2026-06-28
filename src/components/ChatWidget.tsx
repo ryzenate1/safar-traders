@@ -25,7 +25,7 @@ export default function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Welcome to Safar Exports. I can help with sourcing capabilities, export documentation, and RFQ preparation. What are you looking to source?",
+        "Welcome to Safar Exports. We support buyers across markets with non-perishable industrial and commercial sourcing requirements. What can we help you source?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -67,7 +67,7 @@ export default function ChatWidget() {
             role: "assistant",
             content:
               data.error ||
-              "Please submit your requirements and our export sales team will provide a formal quotation.",
+              "Please submit your requirement and our sourcing team will provide a formal quotation.",
           },
         ]);
       }
@@ -89,8 +89,8 @@ export default function ChatWidget() {
         aria-expanded={open}
         style={{
           position: "fixed",
-          bottom: "6.5rem",
-          right: "1.5rem",
+          bottom: "max(6.5rem, calc(env(safe-area-inset-bottom) + 6rem))",
+          right: "1.25rem",
           width: "52px",
           height: "52px",
           borderRadius: "50%",
@@ -113,12 +113,12 @@ export default function ChatWidget() {
 
       <div
         role="dialog"
-        aria-label="Export sales assistant chat"
+        aria-label="Sourcing and trade assistant chat"
         aria-hidden={!open}
         style={{
           position: "fixed",
-          bottom: "10.5rem",
-          right: "1.5rem",
+          bottom: "max(10.5rem, calc(env(safe-area-inset-bottom) + 10rem))",
+          right: "1.25rem",
           width: "min(360px, calc(100vw - 2rem))",
           height: "min(520px, calc(100vh - 8rem))",
           background: "rgba(255,255,255,0.82)",
@@ -277,7 +277,7 @@ function LeadMiniForm({ onSent }: { onSent: () => void }) {
       }}
     >
       <p style={{ fontSize: "0.75rem", color: "var(--color-text-secondary)", margin: 0 }}>
-        Please share a few details so our export sales team can follow up:
+        Please share a few details so our sourcing team can follow up:
       </p>
       <label style={{ position: "absolute", width: 1, height: 1, overflow: "hidden" }} htmlFor="mf-company">Company name</label>
       <input id="mf-company" placeholder="Company name" value={company} onChange={(e) => setCompany(e.target.value)} style={miniInput} autoComplete="organization" />
@@ -305,7 +305,7 @@ function LeadMiniForm({ onSent }: { onSent: () => void }) {
           opacity: submitting ? 0.7 : 1,
         }}
       >
-        {submitting ? "Sending..." : "Send to sales team"}
+        {submitting ? "Sending..." : "Send to sourcing team"}
       </button>
     </div>
   );

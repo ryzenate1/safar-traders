@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Our Export Process",
   description:
-    "From inquiry to delivery — a transparent, documented export process for international buyers of industrial products.",
+    "From RFQ to delivery — a transparent, documented export process for international buyers of industrial products.",
   alternates: { canonical: `${siteConfig.url}/export-process` },
 };
 
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Which Incoterms do you offer?",
-    a: "We typically offer FOB (Free On Board) from Indian ports. CIF and CFR can be arranged for established relationships. Please specify your preferred Incoterms in your inquiry.",
+    a: "We typically offer FOB (Free On Board) from Indian ports. CIF and CFR can be arranged for established relationships. Please specify your preferred Incoterms in your RFQ.",
   },
   {
     q: "What ports do you ship from?",
@@ -37,9 +37,9 @@ export default function ExportProcessPage() {
   return (
     <>
       <PageHero
-        eyebrow="Export Process"
-        title="Transparent from first contact to final delivery."
-        description="Every order follows the same documented process — so you always know where your shipment stands."
+        eyebrow="Trade Process"
+        title="Transparent from first requirement to final delivery."
+        description="Every order follows the same documented process — so you always know where your requirement stands."
         breadcrumbs={[{ label: "Export Process" }]}
       />
       <ExportProcess />

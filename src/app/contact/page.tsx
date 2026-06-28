@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Request a Quote for Industrial Sourcing",
   description:
-    "Submit an RFQ to Safar Exports for industrial metals, machinery, packaging materials, scrap, industrial raw materials, or custom sourcing requirements.",
+    "Submit a sourcing requirement to Safar Exports for review. We cover metals, machinery, industrial materials, and custom requirements — with procurement coordination, documentation support, and supply handling.",
   alternates: { canonical: `${siteConfig.url}/contact` },
 };
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
         <div className="container-site contact-info-grid">
           {[
             { label: "Location", value: `${siteConfig.address.city}, ${siteConfig.address.state}, ${siteConfig.address.country}` },
-            { label: "Trade inquiries", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+            { label: "Trade requirements", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
             { label: "Phone / WhatsApp", value: siteConfig.phone, href: `tel:${siteConfig.phoneRaw}` },
             { label: "Buyer note", value: "For accurate review, include specification, quantity, destination, and required timeline." },
           ].map(({ label, value, href }) => (

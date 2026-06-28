@@ -31,7 +31,6 @@ export default function LeadCTA() {
           product: data.get("category"),
           quantity: data.get("quantity"),
           destinationPort: data.get("destinationPort"),
-          timeline: data.get("timeline"),
           message: data.get("message"),
           website: data.get("website"),
         }),
@@ -49,14 +48,16 @@ export default function LeadCTA() {
 
   return (
     <section className="section-pad bg-white section-border" id="request-quote">
-      <div className="container-site lead-grid">
-        <div>
-          <span className="eyebrow">Request a quotation</span>
-          <h2 className="section-title">Send the details a sourcing team actually needs.</h2>
-          <p className="section-copy">
+      <div className="container-site">
+        <div className="lead-heading">
+          <span className="eyebrow lead-eyebrow">Request a Quotation</span>
+          <h2 className="section-title lead-title">Send the details a sourcing team actually needs.</h2>
+          <p className="section-copy lead-copy">
             A useful RFQ includes the product, specification or grade, quantity, destination port, and timeline. We review feasibility before discussing commercial terms.
           </p>
-
+        </div>
+        <div className="lead-grid">
+        <div>
           <div className="rfq-points" aria-label="RFQ details checklist">
             <p><strong>Product:</strong> category, grade, standard, application</p>
             <p><strong>Quantity:</strong> trial order, container load, or monthly demand</p>
@@ -66,7 +67,7 @@ export default function LeadCTA() {
           <div className="direct-contact">
             <a href={`tel:${siteConfig.phoneRaw}`}><Phone size={15} aria-hidden="true" />{siteConfig.phone}</a>
             <a href={`mailto:${siteConfig.email}`}><Mail size={15} aria-hidden="true" />{siteConfig.email}</a>
-            <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={15} aria-hidden="true" />WhatsApp inquiry</a>
+            <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={15} aria-hidden="true" />WhatsApp requirement</a>
           </div>
         </div>
 
@@ -108,10 +109,6 @@ export default function LeadCTA() {
 
               <div className="form-row-2">
                 <div>
-                  <label className="form-label" htmlFor="country">Country</label>
-                  <input className="form-input" id="country" type="text" name="country" autoComplete="country-name" />
-                </div>
-                <div>
                   <label className="form-label" htmlFor="category">Category *</label>
                   <select className="form-input" id="category" name="category" required defaultValue="">
                     <option value="" disabled>Select category</option>
@@ -119,27 +116,26 @@ export default function LeadCTA() {
                     <option value="Other industrial requirement">Other industrial requirement</option>
                   </select>
                 </div>
-              </div>
-
-              <div className="form-row-2">
                 <div>
                   <label className="form-label" htmlFor="quantity">Quantity / frequency *</label>
                   <input className="form-input" id="quantity" type="text" name="quantity" placeholder="e.g. 2 containers / month" required />
                 </div>
+              </div>
+
+              <div className="form-row-2">
                 <div>
-                  <label className="form-label" htmlFor="destinationPort">Destination port</label>
+                  <label className="form-label form-label-optional" htmlFor="country">Country <span className="optional-tag">(optional)</span></label>
+                  <input className="form-input" id="country" type="text" name="country" autoComplete="country-name" />
+                </div>
+                <div>
+                  <label className="form-label form-label-optional" htmlFor="destinationPort">Destination port <span className="optional-tag">(optional)</span></label>
                   <input className="form-input" id="destinationPort" type="text" name="destinationPort" placeholder="e.g. Jebel Ali, UAE" />
                 </div>
               </div>
 
               <div>
-                <label className="form-label" htmlFor="timeline">Target timeline</label>
-                <input className="form-input" id="timeline" type="text" name="timeline" placeholder="e.g. trial shipment in 30–45 days" />
-              </div>
-
-              <div>
-                <label className="form-label" htmlFor="message">Specification / notes</label>
-                <textarea className="form-input" id="message" name="message" rows={4} placeholder="Grade, standard, packing preference, inspection requirement, Incoterm preference, or any supporting details." />
+                <label className="form-label form-label-optional" htmlFor="message">Specification / notes <span className="optional-tag">(optional — grade, packing, timeline, Incoterm)</span></label>
+                <textarea className="form-input rfq-textarea-compact" id="message" name="message" rows={2} placeholder="Grade, standard, packing, inspection, Incoterm, or timeline." />
               </div>
 
               {error && <p className="form-error" role="alert">{error}</p>}
@@ -149,6 +145,7 @@ export default function LeadCTA() {
               <p className="form-note">No pricing is promised before requirement review. This keeps quotations accurate and commercially usable.</p>
             </form>
           )}
+        </div>
         </div>
       </div>
     </section>

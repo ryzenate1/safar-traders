@@ -12,15 +12,19 @@ const companyLinks = [
   { label: "Resources", href: "/resources" },
 ];
 
+const rfqLinks = [
+  { label: "Request a Quote", href: "/contact" },
+];
+
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container-site footer-grid">
         <div className="footer-brand">
           <Link href="/" aria-label={`${siteConfig.name} home`}>
-            <span className="footer-logo-shell"><Image src={logo} alt={siteConfig.name} height={32} /></span>
+            <span className="footer-logo-shell"><Image src={logo} alt={siteConfig.name} height={38} /></span>
           </Link>
-          <p>Global industrial sourcing and export partner for buyers who need clear requirements, documentation, and coordinated shipment handling.</p>
+          <p>Trade and export partner for buyers sourcing non-perishable industrial and commercial goods — procurement coordination, documentation support, and supply handling from India.</p>
           <div className="footer-contact-list">
             <a href={`tel:${siteConfig.phoneRaw}`}><Phone size={14} aria-hidden="true" />{siteConfig.phone}</a>
             <a href={`mailto:${siteConfig.email}`}><Mail size={14} aria-hidden="true" />{siteConfig.email}</a>
@@ -34,20 +38,22 @@ export default function Footer() {
         </div>
         <div>
           <p className="footer-heading">Company</p>
-          <ul>{companyLinks.map((item) => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}</ul>
+          <ul>
+            {companyLinks.map((item) => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}
+            {rfqLinks.map((item) => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}
+          </ul>
         </div>
         <div>
-          <p className="footer-heading">RFQ</p>
+          <p className="footer-heading">Get in touch</p>
           <ul>
-            <li><Link href="/contact">Request a Quote</Link></li>
-            <li><a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer">WhatsApp inquiry</a></li>
+            <li><a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer">WhatsApp requirement</a></li>
             <li><a href={`mailto:${siteConfig.email}`}>Trade email</a></li>
           </ul>
         </div>
       </div>
       <div className="container-site footer-bottom">
         <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-        <p>International trading · Procurement support · Export coordination</p>
+        <p>Trade & export · Procurement coordination · Documentation support</p>
       </div>
     </footer>
   );
