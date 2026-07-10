@@ -25,7 +25,7 @@ export default function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Welcome to Safar Exports. We support buyers across markets with non-perishable industrial and commercial sourcing requirements. What can we help you source?",
+        "Welcome to Safar Traders. We support buyers across markets with non-perishable industrial and commercial sourcing requirements. What can we help you source?",
     },
   ]);
   const [input, setInput] = useState("");

@@ -1,12 +1,12 @@
 import type { StaticImageData } from "next/image";
-import constructionImage from "@/images/construction.png";
-import engineeringImage from "@/images/engineering.png";
-import industrialMaterialsImage from "@/images/industrialmaterial.png";
-import industrialScrapImage from "@/images/industrialscrap.png";
-import customSourcingImage from "@/images/industrialsourcing.png";
-import machineryImage from "@/images/machine.png";
-import metalsAlloysImage from "@/images/metalandalloy.png";
-import packagingImage from "@/images/packing.png";
+import constructionImage from "@/images/construction.jpg";
+import engineeringImage from "@/images/engineering.jpg";
+import industrialMaterialsImage from "@/images/industrialmaterial.jpg";
+import industrialScrapImage from "@/images/industrialscrap.jpg";
+import customSourcingImage from "@/images/industrialsourcing.jpg";
+import machineryImage from "@/images/machine.jpg";
+import metalsAlloysImage from "@/images/metalandalloy.jpg";
+import packagingImage from "@/images/packing.jpg";
 
 export type ProductSubcategory = {
   slug: string;
@@ -45,13 +45,13 @@ export const productCategories: ProductCategory[] = [
     slug: "metals-alloys",
     title: "Metals & Alloys",
     shortTitle: "Metals & Alloys",
-    seoTitle: "Metals & Alloys Sourcing & Export from India | Safar Exports",
+    seoTitle: "Metals & Alloys Sourcing & Export from India",
     metaDescription:
-      "Source ferrous metals, non-ferrous metals, stainless steel, aluminium, copper, brass, and nickel alloys from India with full export documentation support.",
+      "Source ferrous and non-ferrous metals, stainless steel, aluminium, copper, brass, and nickel alloys from India with export documentation support.",
     description:
       "Ferrous and non-ferrous metals, stainless steel, aluminium, copper, brass, and nickel alloys sourced to buyer specification from India.",
     longDescription:
-      "Safar Exports coordinates procurement of industrial metals and alloys for international buyers. We handle supplier identification, specification matching, packing, documentation, and shipment planning based on your required grade, quantity, and destination. From standard steel grades to speciality nickel alloys, each requirement is reviewed for sourcing feasibility before a quotation is issued.",
+      "Safar Traders coordinates procurement of industrial metals and alloys for international buyers. We handle supplier identification, specification matching, packing, documentation, and shipment planning based on your required grade, quantity, and destination. From standard steel grades to speciality nickel alloys, each requirement is reviewed for sourcing feasibility before a quotation is issued.",
     buyerIntent:
       "For procurement teams sourcing bulk metals, recurring metal supply, or buyers establishing a verified export partner for metals and alloys from India.",
     subcategories: [
@@ -121,13 +121,13 @@ export const productCategories: ProductCategory[] = [
     slug: "industrial-scrap-recyclable-materials",
     title: "Industrial Scrap & Recyclable Materials",
     shortTitle: "Industrial Scrap",
-    seoTitle: "Industrial Scrap & Recyclable Materials | Safar Exports",
+    seoTitle: "Industrial Scrap & Recyclable Materials",
     metaDescription:
       "Source metal scrap, plastic scrap, paper and cardboard, rubber scrap, and electronic scrap from India with export coordination and documentation support.",
     description:
       "Metal scrap, plastic scrap, paper and cardboard, rubber scrap, and electronic scrap sourced to buyer specification from India.",
     longDescription:
-      "Safar Exports supports international buyers sourcing industrial scrap and recyclable materials from India. We coordinate supplier identification, grade verification, packing, and export documentation for metal, plastic, paper, rubber, and electronic scrap requirements. Each requirement is reviewed for feasibility and grade compliance before a quotation is issued.",
+      "Safar Traders supports international buyers sourcing industrial scrap and recyclable materials from India. We coordinate supplier identification, grade verification, packing, and export documentation for metal, plastic, paper, rubber, and electronic scrap requirements. Each requirement is reviewed for feasibility and grade compliance before a quotation is issued.",
     buyerIntent:
       "For recyclers, reprocessors, and trading houses sourcing classified industrial scrap and recyclable feedstock from India.",
     subcategories: [
@@ -181,13 +181,13 @@ export const productCategories: ProductCategory[] = [
     slug: "machinery-equipment",
     title: "Machinery & Equipment",
     shortTitle: "Machinery & Equipment",
-    seoTitle: "Industrial Machinery & Equipment Sourcing from India | Safar Exports",
+    seoTitle: "Industrial Machinery & Equipment Sourcing from India",
     metaDescription:
-      "Source manufacturing machinery, processing equipment, industrial tools, heavy equipment, and automation equipment from India for international procurement requirements.",
+      "Source manufacturing machinery, processing equipment, industrial tools, heavy equipment, and automation equipment from India for export.",
     description:
       "Manufacturing machinery, processing equipment, industrial tools, heavy equipment, and automation equipment sourced through Indian supplier networks.",
     longDescription:
-      "Safar Exports helps buyers source industrial machinery and equipment through verified Indian supplier networks. Requirements can include new or used machinery, processing equipment, automation assets, heavy equipment, and industrial tools. Each requirement is reviewed against specification, condition, packing suitability, and export feasibility before a quotation is issued.",
+      "Safar Traders helps buyers source industrial machinery and equipment through verified Indian supplier networks. Requirements can include new or used machinery, processing equipment, automation assets, heavy equipment, and industrial tools. Each requirement is reviewed against specification, condition, packing suitability, and export feasibility before a quotation is issued.",
     buyerIntent:
       "For buyers who need a sourcing partner to identify equipment, coordinate inspection, and manage export movement from India.",
     subcategories: [
@@ -241,13 +241,13 @@ export const productCategories: ProductCategory[] = [
     slug: "construction-building-materials",
     title: "Construction & Building Materials",
     shortTitle: "Construction Materials",
-    seoTitle: "Construction & Building Materials Export from India | Safar Exports",
+    seoTitle: "Construction & Building Materials Export from India",
     metaDescription:
       "Source granite, marble, natural stone, tiles, and building materials from India with export documentation and procurement coordination support.",
     description:
       "Granite, marble, natural stone, tiles, and industrial building materials sourced from India for construction and infrastructure projects.",
     longDescription:
-      "Safar Exports supports international buyers sourcing construction and building materials from India. We coordinate procurement of stone products, tiles, and building inputs from verified Indian quarries and manufacturers. Each requirement is reviewed for specification, quality, packing suitability, and export handling before a quotation is issued.",
+      "Safar Traders supports international buyers sourcing construction and building materials from India. We coordinate procurement of stone products, tiles, and building inputs from verified Indian quarries and manufacturers. Each requirement is reviewed for specification, quality, packing suitability, and export handling before a quotation is issued.",
     buyerIntent:
       "For construction companies, project developers, and trading houses sourcing Indian stone and building materials for domestic or export use.",
     subcategories: [
@@ -301,13 +301,13 @@ export const productCategories: ProductCategory[] = [
     slug: "industrial-raw-materials",
     title: "Industrial Raw Materials",
     shortTitle: "Industrial Raw Materials",
-    seoTitle: "Industrial Raw Materials Sourcing from India | Safar Exports",
+    seoTitle: "Industrial Raw Materials Sourcing from India",
     metaDescription:
       "Source plastics and polymers, packaging materials, industrial chemicals, minerals, and engineering materials from India with procurement and export support.",
     description:
       "Plastics and polymers, packaging materials, industrial chemicals, minerals, and engineering materials sourced from India to buyer specification.",
     longDescription:
-      "Safar Exports sources industrial raw materials and manufacturing inputs for buyers who need reliable procurement support from India. This category covers plastic polymers, packaging materials, industrial chemicals, minerals, and speciality engineering materials. We focus on specification clarity, grade verification, packing suitability, and export documentation throughout.",
+      "Safar Traders sources industrial raw materials and manufacturing inputs for buyers who need reliable procurement support from India. This category covers plastic polymers, packaging materials, industrial chemicals, minerals, and speciality engineering materials. We focus on specification clarity, grade verification, packing suitability, and export documentation throughout.",
     buyerIntent:
       "For importers and manufacturers sourcing bulk industrial raw materials, recurring supply, or custom-grade inputs from India.",
     subcategories: [
@@ -361,13 +361,13 @@ export const productCategories: ProductCategory[] = [
     slug: "engineering-components-hardware",
     title: "Engineering Components & Hardware",
     shortTitle: "Engineering Components",
-    seoTitle: "Engineering Components & Hardware Sourcing from India | Safar Exports",
+    seoTitle: "Engineering Components & Hardware Sourcing from India",
     metaDescription:
-      "Source mechanical parts, fabricated components, industrial hardware, fasteners, and custom manufactured parts from India for engineering and industrial applications.",
+      "Source mechanical parts, fabricated components, industrial hardware, fasteners, and custom parts from India for industrial applications.",
     description:
       "Mechanical parts, fabricated components, industrial hardware, fasteners, and custom manufactured parts sourced from India to buyer specification.",
     longDescription:
-      "Safar Exports coordinates procurement of engineering components and industrial hardware for international buyers. We support sourcing of standard mechanical parts, fabricated assemblies, fasteners, and custom-manufactured components from verified Indian suppliers. Each requirement is reviewed against specification, tolerance, material, and export feasibility before a quotation is issued.",
+      "Safar Traders coordinates procurement of engineering components and industrial hardware for international buyers. We support sourcing of standard mechanical parts, fabricated assemblies, fasteners, and custom-manufactured components from verified Indian suppliers. Each requirement is reviewed against specification, tolerance, material, and export feasibility before a quotation is issued.",
     buyerIntent:
       "For engineering firms, OEM buyers, and procurement teams sourcing components, parts, and hardware from Indian manufacturers.",
     subcategories: [
@@ -421,13 +421,13 @@ export const productCategories: ProductCategory[] = [
     slug: "packaging-commercial-supplies",
     title: "Packaging & Commercial Supplies",
     shortTitle: "Packaging & Supplies",
-    seoTitle: "Packaging & Commercial Supplies Sourcing from India | Safar Exports",
+    seoTitle: "Packaging & Commercial Supplies Sourcing from India",
     metaDescription:
-      "Source cartons and corrugated packaging, plastic packaging, industrial packing materials, bulk handling supplies, and commercial supply requirements from India.",
+      "Source corrugated packaging, plastic packaging, industrial packing materials, bulk handling supplies, and commercial supplies from India.",
     description:
       "Cartons and corrugated packaging, plastic packaging, industrial packing materials, bulk handling supplies, and commercial supply requirements sourced from India.",
     longDescription:
-      "Safar Exports sources packaging and commercial supply requirements for buyers who need reliable, scalable sourcing from India. We coordinate procurement of corrugated packaging, plastic containers, industrial packing materials, and bulk handling supplies. Each requirement is reviewed for material specification, print and finish requirements, and export feasibility.",
+      "Safar Traders sources packaging and commercial supply requirements for buyers who need reliable, scalable sourcing from India. We coordinate procurement of corrugated packaging, plastic containers, industrial packing materials, and bulk handling supplies. Each requirement is reviewed for material specification, print and finish requirements, and export feasibility.",
     buyerIntent:
       "For distributors, manufacturers, and commercial buyers sourcing bulk packaging and supply materials from India.",
     subcategories: [
@@ -481,13 +481,13 @@ export const productCategories: ProductCategory[] = [
     slug: "custom-sourcing",
     title: "Custom Sourcing",
     shortTitle: "Custom Sourcing",
-    seoTitle: "Custom Industrial Sourcing Support from India | Safar Exports",
+    seoTitle: "Custom Industrial Sourcing Support from India",
     metaDescription:
-      "Safar Exports supports buyer-led sourcing, supplier identification, procurement coordination, non-standard product requests, and domestic and export supply from India.",
+      "Get buyer-led sourcing, supplier identification, procurement coordination, and export support for non-standard product requirements from India.",
     description:
       "A structured sourcing route for buyer-led requirements outside standard categories — handled through RFQ review, supplier identification, and procurement coordination.",
     longDescription:
-      "Many international buyers need a procurement partner for products that fall outside a standard catalogue. Safar Exports reviews custom industrial sourcing requirements — covering supplier identification, procurement coordination, export documentation, and buyer-specific specifications. Submit your requirement and we will assess feasibility, supplier availability, and export handling.",
+      "Many international buyers need a procurement partner for products that fall outside a standard catalogue. Safar Traders reviews custom industrial sourcing requirements — covering supplier identification, procurement coordination, export documentation, and buyer-specific specifications. Submit your requirement and we will assess feasibility, supplier availability, and export handling.",
     buyerIntent:
       "For procurement teams with non-standard industrial requirements, multi-product orders, or buyers establishing a new supply relationship from India.",
     subcategories: [

@@ -11,6 +11,19 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  async headers() {
+    return [
+      {
+        source: "/:seoAsset(hero-bg|og-image).jpg",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: "/products/industrial-metals", destination: "/products/metals-alloys", permanent: true },

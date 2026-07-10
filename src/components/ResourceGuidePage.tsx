@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, MessageCircle, X } from "lucide-react";
+import { ArrowLeft, Check, MessageCircle, X } from "lucide-react";
 import { resourceGuides, type ResourceGuide } from "@/lib/resources";
 import { siteConfig } from "@/lib/site-config";
+import RFQWizardLauncher from "./RFQWizardLauncher";
 
 export default function ResourceGuidePage({ guide }: { guide: ResourceGuide }) {
   const related = resourceGuides.filter((g) => g.slug !== guide.slug).slice(0, 3);
@@ -14,6 +15,9 @@ export default function ResourceGuidePage({ guide }: { guide: ResourceGuide }) {
     author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     mainEntityOfPage: guideUrl,
+    datePublished: guide.datePublished,
+    dateModified: guide.dateModified,
+    image: `${siteConfig.url}${siteConfig.ogImage}`,
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -94,9 +98,7 @@ export default function ResourceGuidePage({ guide }: { guide: ResourceGuide }) {
               <p className="sidebar-info-copy">
                 Send your product, quantity, destination, and timeline — we&apos;ll review feasibility before discussing terms.
               </p>
-              <Link href="/contact" className="btn btn-primary" style={{ width: "100%" }}>
-                Request Quote <ArrowRight size={15} aria-hidden="true" />
-              </Link>
+              <RFQWizardLauncher label="Request Quote" className="btn btn-primary" />
               <a
                 href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`}
                 target="_blank"

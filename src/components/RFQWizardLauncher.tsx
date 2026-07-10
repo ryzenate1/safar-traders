@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { FileText } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import RFQWizard from "./RFQWizard";
@@ -14,6 +15,13 @@ export default function RFQWizardLauncher({
 }) {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [open]);
+
   return (
     <>
       <button
@@ -26,29 +34,31 @@ export default function RFQWizardLauncher({
         {label}
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            role="dialog"
-            aria-modal="true"
-            onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            style={{
-              position: "fixed", inset: 0,
-              backgroundColor: "rgba(0,0,0,0.45)",
-              backdropFilter: "blur(4px)",
-              WebkitBackdropFilter: "blur(4px)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              padding: "1rem", zIndex: 1000,
-            }}
-          >
-            <RFQWizard onClose={() => setOpen(false)} />
-          </motion.div>
+      {open && typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="rfq-modal-overlay"
+              style={{
+                position: "fixed", inset: 0,
+                backgroundColor: "#fff",
+                backdropFilter: "blur(4px)",
+                WebkitBackdropFilter: "blur(4px)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                padding: 0, zIndex: 3000,
+              }}
+            >
+              <RFQWizard onClose={() => setOpen(false)} />
+            </motion.div>
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </>
   );
 }

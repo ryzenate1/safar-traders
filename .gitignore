@@ -7,6 +7,11 @@
 /out/
 *.tsbuildinfo
 
+# Local exports and visual test artifacts
+/output/
+/tmp/
+/Archive.zip
+
 # local environment files
 .env*.local
 

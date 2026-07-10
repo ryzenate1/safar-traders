@@ -33,9 +33,23 @@ const faqs = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: a,
+    },
+  })),
+};
+
 export default function ExportProcessPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageHero
         eyebrow="Trade Process"
         title="Transparent from first requirement to final delivery."

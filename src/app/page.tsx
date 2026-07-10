@@ -7,9 +7,9 @@ import LeadCTA from "@/components/LeadCTA";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Trade & Export Support for Serious Buyers | Safar Exports",
+  title: "Trade & Export Support for Serious Buyers | Safar Traders",
   description:
-    "Safar Exports supports buyer-led sourcing, procurement coordination, and export supply for non-perishable industrial and commercial requirements.",
+    "Safar Traders supports buyer-led sourcing, procurement coordination, and export supply for non-perishable industrial and commercial requirements.",
   alternates: { canonical: siteConfig.url },
 };
 

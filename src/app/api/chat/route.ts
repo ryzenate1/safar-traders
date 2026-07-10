@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
  * Get a key at https://console.anthropic.com/
  */
 
-const SYSTEM_PROMPT = `You are a trade and sourcing assistant for Safar Exports, a procurement and export partner for buyers of non-perishable industrial and commercial goods.
+const SYSTEM_PROMPT = `You are a trade and sourcing assistant for Safar Traders, a procurement and export partner for buyers of non-perishable industrial and commercial goods.
 
 Your role is to help buyers understand our sourcing scope and guide them toward submitting a requirement for review.
 

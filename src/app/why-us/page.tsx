@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Why Choose Us",
   description:
-    "Procurement coordination, export documentation, and supplier management — why buyers choose Safar Exports as their trade and export partner.",
+    "Procurement coordination, export documentation, and supplier management — why buyers choose Safar Traders as their trade and export partner.",
   alternates: { canonical: `${siteConfig.url}/why-us` },
 };
 

@@ -10,6 +10,8 @@ export type ResourceGuide = {
   summary: string;
   seoTitle: string;
   metaDescription: string;
+  datePublished: string;
+  dateModified: string;
   readTime: string;
   intro: string[];
   sections: ResourceSection[];
@@ -25,9 +27,11 @@ export const resourceGuides: ResourceGuide[] = [
     title: "What to include in an industrial sourcing request",
     summary:
       "A useful RFQ gives the sourcing team enough information to check supplier fit, pricing feasibility, packing, and export handling before discussing commercial terms.",
-    seoTitle: "How to Write an Industrial RFQ | Safar Exports Buyer Guide",
+    seoTitle: "How to Write an Industrial RFQ",
     metaDescription:
       "A complete guide to preparing an industrial RFQ — what details to include, why each one matters, and the most common mistakes that delay a quotation.",
+    datePublished: "2026-07-10",
+    dateModified: "2026-07-10",
     readTime: "6 min read",
     intro: [
       "Most delays in industrial sourcing don't happen during shipping or production — they happen before a quotation is even issued, because the original request didn't carry enough information to act on. An RFQ (Request for Quotation) is the starting point of the entire sourcing process, and the quality of that first message determines how quickly — and how accurately — a usable quotation can be prepared.",
@@ -93,9 +97,11 @@ export const resourceGuides: ResourceGuide[] = [
     title: "Documents buyers usually review before shipment",
     summary:
       "Documentation requirements depend on product type, destination country, and buyer import process. The required list should be confirmed before shipment planning.",
-    seoTitle: "Export Documentation Checklist for Importers | Safar Exports",
+    seoTitle: "Export Documentation Checklist for Importers",
     metaDescription:
-      "A practical breakdown of the export documents buyers typically need before shipment — what each document does, who issues it, and why it matters for customs clearance.",
+      "A practical checklist of export documents buyers review before shipment, including what each document does and why it matters for customs clearance.",
+    datePublished: "2026-07-10",
+    dateModified: "2026-07-10",
     readTime: "7 min read",
     intro: [
       "Export documentation exists for one practical reason: it lets customs authorities, banks, freight forwarders, and the buyer's own receiving team verify that a shipment is what it claims to be, in the quantity claimed, from the source claimed. Missing or inconsistent documents are one of the most common causes of clearance delay — not because the product itself is a problem, but because the paperwork doesn't match it cleanly.",
@@ -155,9 +161,11 @@ export const resourceGuides: ResourceGuide[] = [
     title: "How verification supports procurement teams",
     summary:
       "Inspection scope should be agreed before loading. For many industrial orders, inspection can include product condition, quantity, packing, marking, and loading checks.",
-    seoTitle: "Pre-Shipment Inspection Guide for Industrial Buyers | Safar Exports",
+    seoTitle: "Pre-Shipment Inspection Guide for Industrial Buyers",
     metaDescription:
       "How pre-shipment inspection works for industrial orders — what gets checked, who can carry it out, and how to agree inspection scope before loading.",
+    datePublished: "2026-07-10",
+    dateModified: "2026-07-10",
     readTime: "5 min read",
     intro: [
       "Pre-shipment inspection is the verification step that happens after production but before the container is sealed — confirming that what's about to ship actually matches what was agreed. For buyers who haven't visited the supplier's facility, or who are sourcing at a distance, it's the single most effective way to catch a problem while it's still cheap and fast to fix.",
@@ -214,9 +222,11 @@ export const resourceGuides: ResourceGuide[] = [
     title: "Packing details buyers should confirm early",
     summary:
       "Packing affects freight cost, handling safety, container use, and customs documentation. It should be discussed before final quotation whenever possible.",
-    seoTitle: "Export Packing Guide for Industrial Shipments | Safar Exports",
+    seoTitle: "Export Packing Guide for Industrial Shipments",
     metaDescription:
       "How packing choices affect freight cost, container utilisation, and shipment safety — and what details to confirm before a quotation is finalised.",
+    datePublished: "2026-07-10",
+    dateModified: "2026-07-10",
     readTime: "5 min read",
     intro: [
       "Packing is sometimes treated as an operational detail to be sorted out after pricing is agreed. In practice, packing method is one of the biggest variables behind the final landed cost of an industrial shipment — it affects how efficiently a container is used, how much handling risk the cargo carries, and what documentation is needed at customs. Getting it agreed early avoids re-quoting later.",
@@ -273,9 +283,11 @@ export const resourceGuides: ResourceGuide[] = [
     title: "Commercial terms to clarify before quotation",
     summary:
       "Before a formal quotation, the buyer and sourcing team should align on basic trade terms so pricing can be prepared accurately.",
-    seoTitle: "Incoterms & Trade Terms Explained for Buyers | Safar Exports",
+    seoTitle: "Incoterms & Trade Terms Explained for Buyers",
     metaDescription:
       "A buyer-focused explanation of Incoterms, payment terms, and the commercial details that turn a rough price into an accurate, usable quotation.",
+    datePublished: "2026-07-10",
+    dateModified: "2026-07-10",
     readTime: "6 min read",
     intro: [
       "A price quoted without trade terms attached isn't really a complete quotation — it's a starting figure. Two suppliers quoting the same per-unit price under different Incoterms can mean very different total costs once freight, insurance, and risk responsibility are factored in. This guide explains the commercial terms worth clarifying before treating any quotation as comparable or final.",
@@ -333,9 +345,11 @@ export const resourceGuides: ResourceGuide[] = [
     title: "How to define a custom sourcing requirement",
     summary:
       "For custom or non-standard industrial requirements, the buyer should describe the application and acceptable alternatives, not only the product name.",
-    seoTitle: "Defining a Custom Sourcing Requirement | Safar Exports Buyer Guide",
+    seoTitle: "Defining a Custom Sourcing Requirement",
     metaDescription:
       "How to scope a custom or non-standard industrial sourcing requirement so it can be matched to the right supplier quickly and accurately.",
+    datePublished: "2026-07-10",
+    dateModified: "2026-07-10",
     readTime: "5 min read",
     intro: [
       "Standard products are relatively easy to source — the specification is well known and the supplier base is established. Custom or non-standard requirements are different: the product name alone often isn't enough to identify a suitable supplier, because the requirement sits outside a typical catalogue listing. Defining scope properly upfront is what makes the difference between a fast, accurate sourcing response and a long back-and-forth.",

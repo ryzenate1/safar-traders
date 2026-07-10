@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { productCategories } from "@/lib/products";
 import { siteConfig } from "@/lib/site-config";
-import logo from "@/images/safarlogo-512.webp";
+import logo from "@/images/safartraders.png";
+import RFQWizardLauncher from "./RFQWizardLauncher";
 
 const companyLinks = [
   { label: "About", href: "/about" },
@@ -12,21 +13,18 @@ const companyLinks = [
   { label: "Resources", href: "/resources" },
 ];
 
-const rfqLinks = [
-  { label: "Request a Quote", href: "/contact" },
-];
-
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container-site footer-grid">
         <div className="footer-brand">
-          <Link href="/" aria-label={`${siteConfig.name} home`}>
-            <span className="footer-logo-shell"><Image src={logo} alt={siteConfig.name} height={38} /></span>
+          <Link href="/" aria-label={`${siteConfig.name} home`} className="footer-logo-link">
+            <Image src={logo} alt={siteConfig.name} height={96} className="footer-logo" />
           </Link>
           <p>Trade and export partner for buyers sourcing non-perishable industrial and commercial goods — procurement coordination, documentation support, and supply handling from India.</p>
           <div className="footer-contact-list">
             <a href={`tel:${siteConfig.phoneRaw}`}><Phone size={14} aria-hidden="true" />{siteConfig.phone}</a>
+            <a href={`tel:${siteConfig.phoneSecondaryRaw}`}><Phone size={14} aria-hidden="true" />{siteConfig.phoneSecondary}</a>
             <a href={`mailto:${siteConfig.email}`}><Mail size={14} aria-hidden="true" />{siteConfig.email}</a>
             <span><MapPin size={14} aria-hidden="true" />{siteConfig.address.city}, {siteConfig.address.state}, {siteConfig.address.country}</span>
           </div>
@@ -40,7 +38,7 @@ export default function Footer() {
           <p className="footer-heading">Company</p>
           <ul>
             {companyLinks.map((item) => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}
-            {rfqLinks.map((item) => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}
+            <li><RFQWizardLauncher label="Request a Quote" className="footer-rfq-button" /></li>
           </ul>
         </div>
         <div>

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import RFQWizardLauncher from "./RFQWizardLauncher";
 
 const steps = [
   {
@@ -74,9 +74,7 @@ export default function ExportProcess() {
               Our team manages sourcing, procurement, documentation, and freight coordination directly, so buyers deal with a single point of contact from RFQ to final settlement.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <Link href="/contact" className="btn btn-primary">
-                Submit a Requirement <ArrowRight size={15} aria-hidden="true" />
-              </Link>
+              <RFQWizardLauncher label="Submit a Requirement" className="btn btn-primary" />
               <Link href="/export-process" className="btn btn-secondary">
                 View full process
               </Link>

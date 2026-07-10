@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import RFQWizardLauncher from "@/components/RFQWizardLauncher";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Safar Exports is a trade and export partner for buyers who need reliable sourcing support across multiple non-perishable industrial and commercial product categories.",
+    "Safar Traders is a trade and export partner for buyers who need reliable sourcing support across multiple non-perishable industrial and commercial product categories.",
   alternates: { canonical: `${siteConfig.url}/about` },
 };
 
@@ -36,7 +35,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About Us"
         title="Built around a single idea: one partner, one process."
-        description="Safar Exports is a procurement and export partner for buyers who need sourcing coordination, documentation support, and supply handling across multiple product categories."
+        description="Safar Traders is a procurement and export partner for buyers who need sourcing coordination, documentation support, and supply handling across multiple product categories."
         breadcrumbs={[{ label: "About" }]}
       />
 
@@ -64,7 +63,7 @@ export default function AboutPage() {
             <div>
               <p style={{ fontSize: "1rem", color: "var(--color-text-secondary)", lineHeight: 1.8, marginBottom: "1.25rem" }}>
                 Buyers should not have to manage multiple suppliers, documentation partners, and
-                shipment coordination separately. Safar Exports brings sourcing, procurement
+                shipment coordination separately. Safar Traders brings sourcing, procurement
                 coordination, documentation support, and supply handling into one clear commercial process.
               </p>
               <p style={{ fontSize: "1rem", color: "var(--color-text-secondary)", lineHeight: 1.8 }}>
@@ -126,9 +125,7 @@ export default function AboutPage() {
           <p style={{ color: "var(--color-dark-muted)", marginBottom: "2rem", fontSize: "1rem", lineHeight: 1.7 }}>
             Send your product requirement, quantity, destination, timeline, and specification so we can review sourcing feasibility.
           </p>
-          <Link href="/contact" className="btn btn-primary">
-            Request a Quote <ArrowRight size={15} />
-          </Link>
+          <RFQWizardLauncher label="Request a Quote" className="btn btn-primary" />
         </div>
       </section>
 

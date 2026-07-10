@@ -16,7 +16,7 @@ const COUNTRIES = [
 ];
 
 function buildWhatsAppMessage(fields: Record<string, string>, categoryTitle: string) {
-  return `Hello Safar Exports,
+  return `Hello Safar Traders,
 
 I would like to request a quotation.
 
@@ -42,6 +42,43 @@ Please review and share sourcing feasibility / quotation details.`;
 
 export default function ProductDetailPage({ category }: Props) {
   const formRef = useRef<HTMLDivElement>(null);
+  const categoryUrl = `${siteConfig.url}/products/${category.slug}`;
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${category.title} sourcing and export support`,
+    description: category.metaDescription,
+    provider: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    areaServed: "Worldwide",
+    serviceType: category.title,
+    url: categoryUrl,
+    image: `${siteConfig.url}${siteConfig.ogImage}`,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${category.shortTitle} sourcing categories`,
+      itemListElement: category.subcategories.map((sub) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: sub.name,
+          description: sub.description,
+        },
+      })),
+    },
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Capabilities", item: `${siteConfig.url}/products` },
+      { "@type": "ListItem", position: 3, name: category.title, item: categoryUrl },
+    ],
+  };
   const [form, setForm] = useState({
     name: "", company: "", email: "", phone: "", country: "",
     subcategory: "", product: "", grade: "", quantity: "",
@@ -130,6 +167,8 @@ export default function ProductDetailPage({ category }: Props) {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {/* ── HERO ── */}
       <section className="cat-hero">
         <div className="container-site">
@@ -147,7 +186,7 @@ export default function ProductDetailPage({ category }: Props) {
                 Request a Quote <ArrowRight size={15} aria-hidden="true" />
               </button>
               <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hello Safar Exports, I would like to discuss a sourcing requirement for ${category.shortTitle}.`)}`}
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hello Safar Traders, I would like to discuss a sourcing requirement for ${category.shortTitle}.`)}`}
                 target="_blank" rel="noopener noreferrer"
                 className="btn btn-secondary"
               >
@@ -257,7 +296,7 @@ export default function ProductDetailPage({ category }: Props) {
                   <h3>Requirement received.</h3>
                   <p>We will review your requirement and respond within one business day. For urgent requirements, use the WhatsApp button.</p>
                   <a
-                    href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hello Safar Exports, I just submitted an RFQ for ${category.shortTitle}. Please confirm receipt.`)}`}
+                    href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hello Safar Traders, I just submitted an RFQ for ${category.shortTitle}. Please confirm receipt.`)}`}
                     target="_blank" rel="noopener noreferrer"
                     className="btn btn-secondary"
                   >

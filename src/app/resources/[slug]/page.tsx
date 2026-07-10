@@ -24,6 +24,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: guide.metaDescription,
       url: `${siteConfig.url}/resources/${guide.slug}`,
       type: "article",
+      publishedTime: guide.datePublished,
+      modifiedTime: guide.dateModified,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${guide.title} by ${siteConfig.name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.seoTitle,
+      description: guide.metaDescription,
+      images: [siteConfig.ogImage],
     },
   };
 }

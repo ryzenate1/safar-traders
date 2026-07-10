@@ -1,20 +1,24 @@
 export const siteConfig = {
-  name: "Safar Exports",
+  name: "Safar Traders",
   tagline: "Trade & Export Partner",
   description:
-    "Safar Exports is a trade and export partner for buyers sourcing non-perishable industrial and commercial goods — metals, machinery, industrial materials, and custom requirements — with procurement coordination, documentation support, and supply handling.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://safarexports.com",
-  phone: "+91 73959 25908",
-  phoneRaw: "+917395925908",
-  whatsapp: "+917395925908",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "trade@safarexports.com",
+    "Safar Traders is a trade and export partner for buyers sourcing non-perishable industrial and commercial goods — metals, machinery, industrial materials, and custom requirements — with procurement coordination, documentation support, and supply handling.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://safartraders.com",
+  ogImage: "/og-image.jpg",
+  lastModified: "2026-07-10",
+  phone: "+91 75400 02039",
+  phoneRaw: "+917540002039",
+  phoneSecondary: "+91 75400 02038",
+  phoneSecondaryRaw: "+917540002038",
+  whatsapp: "+917540002039",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "thesafartraders@gmail.com",
   address: {
     city: "Chennai",
     state: "Tamil Nadu",
     country: "India",
   },
   social: {
-    linkedin: "https://linkedin.com/company/safar-exports",
+    linkedin: "https://linkedin.com/company/safar-traders",
   },
   nav: [
     { label: "Capabilities", href: "/products" },

@@ -14,7 +14,7 @@ const staticRoutes: MetadataRoute.Sitemap = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = new Date(siteConfig.lastModified);
   const capabilityRoutes = productCategories.map((category) => ({
     url: `${siteConfig.url}/products/${category.slug}`,
     lastModified,

@@ -24,6 +24,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: category.metaDescription,
       url: `${siteConfig.url}/products/${category.slug}`,
       type: "website",
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${category.title} sourcing by ${siteConfig.name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: category.seoTitle,
+      description: category.metaDescription,
+      images: [siteConfig.ogImage],
     },
   };
 }

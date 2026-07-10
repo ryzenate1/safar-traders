@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import constructionMaterialsImage from "@/images/construction.png";
-import engineeringComponentsImage from "@/images/engineering.png";
-import industrialRawMaterialsImage from "@/images/industrialmaterial.png";
-import industrialScrapImage from "@/images/industrialscrap.png";
-import customSourcingImage from "@/images/industrialsourcing.png";
-import machineryEquipmentImage from "@/images/machine.png";
-import metalsAlloysImage from "@/images/metalandalloy.png";
-import packagingSuppliesImage from "@/images/packing.png";
+import constructionMaterialsImage from "@/images/construction.jpg";
+import engineeringComponentsImage from "@/images/engineering.jpg";
+import industrialRawMaterialsImage from "@/images/industrialmaterial.jpg";
+import industrialScrapImage from "@/images/industrialscrap.jpg";
+import customSourcingImage from "@/images/industrialsourcing.jpg";
+import machineryEquipmentImage from "@/images/machine.jpg";
+import metalsAlloysImage from "@/images/metalandalloy.jpg";
+import packagingSuppliesImage from "@/images/packing.jpg";
 
 const capabilityPreviews = [
   { slug: "metals-alloys", label: "Metals & Alloys", desc: "Ferrous, non-ferrous, stainless steel, aluminium, copper, brass, and nickel alloys.", image: metalsAlloysImage },
@@ -29,7 +29,7 @@ export default function ProductCategories() {
         <div className="section-heading-row">
           <div>
             <span className="eyebrow">Capabilities</span>
-            <h2 className="section-title small">Sourcing and supply support across 8 categories.</h2>
+            <h2 className="section-title small">Sourcing and supply support across all categories.</h2>
           </div>
           <Link href="/products" className="btn btn-secondary">
             View all capabilities <ArrowRight size={14} aria-hidden="true" />

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { resourceGuides } from "@/lib/resources";
 import { siteConfig } from "@/lib/site-config";
+import RFQWizardLauncher from "./RFQWizardLauncher";
 
 export default function ResourcesGrid() {
   return (
@@ -25,15 +26,12 @@ export default function ResourcesGrid() {
           <span className="resource-label">Next step</span>
           <h2>Prepared your requirement? Request a quotation.</h2>
           <p>
-            Send the product details, quantity, destination, and timeline so Safar Exports
+            Send the product details, quantity, destination, and timeline so Safar Traders
             can review sourcing feasibility.
           </p>
         </div>
         <div className="resource-cta-actions">
-          <Link href="/contact" className="btn btn-primary">
-            Request Quote
-            <ArrowRight size={15} aria-hidden="true" />
-          </Link>
+          <RFQWizardLauncher label="Request Quote" className="btn btn-primary" />
           <a
             href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`}
             className="btn btn-secondary"

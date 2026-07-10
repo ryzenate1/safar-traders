@@ -66,6 +66,7 @@ export default function LeadCTA() {
 
           <div className="direct-contact">
             <a href={`tel:${siteConfig.phoneRaw}`}><Phone size={15} aria-hidden="true" />{siteConfig.phone}</a>
+            <a href={`tel:${siteConfig.phoneSecondaryRaw}`}><Phone size={15} aria-hidden="true" />{siteConfig.phoneSecondary}</a>
             <a href={`mailto:${siteConfig.email}`}><Mail size={15} aria-hidden="true" />{siteConfig.email}</a>
             <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={15} aria-hidden="true" />WhatsApp requirement</a>
           </div>
@@ -75,7 +76,7 @@ export default function LeadCTA() {
           {submitted ? (
             <div className="success-state" role="status">
               <h3>RFQ received.</h3>
-              <p>Thank you. Your requirement has been sent to the Safar Exports team for review.</p>
+              <p>Thank you. Your requirement has been sent to the Safar Traders team for review.</p>
               <button type="button" className="btn btn-secondary" onClick={() => setSubmitted(false)}>Submit another RFQ</button>
             </div>
           ) : (

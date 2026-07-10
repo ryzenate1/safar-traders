@@ -44,8 +44,8 @@ export default function WhyChooseUs({ showHeader = true }: WhyChooseUsProps) {
       <div className="container-site">
         {showHeader && (
           <div className="why-safar-header">
-            <span className="eyebrow">Why Safar Exports</span>
-            <h2 className="section-title small">Why buyers work with Safar Exports.</h2>
+            <span className="eyebrow">Why Safar Traders</span>
+            <h2 className="section-title small">Why buyers work with Safar Traders.</h2>
           </div>
         )}
 
@@ -58,12 +58,13 @@ export default function WhyChooseUs({ showHeader = true }: WhyChooseUsProps) {
             transition={{ duration: prefersReducedMotion ? 0.01 : 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="why-feature-tag">Our edge</span>
-            <h3>Requirement research before quotation.</h3>
+            <h3>R&amp;D-led requirement research before quotation.</h3>
             <p>
-              Before quoting, we study the buyer&rsquo;s requirement, compare supplier fit, check product
-              suitability, and review practical sourcing options. This helps buyers avoid wrong
-              materials, unsuitable suppliers, and unclear pricing — so every quotation that follows
-              is grounded in a sourcing context that actually fits the requirement.
+              Before quoting, we use R&amp;D-style research and development review to study the
+              buyer&rsquo;s requirement, compare supplier fit, check product suitability, and confirm
+              quality expectations. This helps buyers avoid wrong items, unsuitable materials, and
+              low-quality supply — so every quotation is grounded in sourcing context that actually
+              fits the required product, grade, and application.
             </p>
           </motion.div>
 

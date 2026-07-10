@@ -1,6 +1,10 @@
+"use client";
+
+import type { CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowRight, FileText, Globe2, MessageCircle, SearchCheck } from "lucide-react";
+import { FileText, Globe2, MessageCircle, SearchCheck } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import RFQWizardLauncher from "@/components/RFQWizardLauncher";
 
 const proofItems = [
   { icon: SearchCheck, title: "Requirement-led sourcing", text: "Every order starts with a confirmed requirement — specification, quantity, destination, and trade terms." },
@@ -10,42 +14,43 @@ const proofItems = [
 
 export default function Hero() {
   return (
-    <section className="hero-section">
+    <section className="hero-section" style={{ "--hero-bg": "url('/hero-bg.jpg')" } as CSSProperties}>
       <div className="container-site">
 
-        <div className="hero-content">
+        <div className="hero-layout">
+          <div className="hero-content">
 
-          <div className="hero-tag">
-            <span className="tag tag-accent">Trade &amp; Export Partner</span>
+            <div className="hero-tag">
+              <span className="tag tag-accent">Trade &amp; Export Partner</span>
+            </div>
+
+            <h1 className="hero-title hero-title-brand">
+              <span className="hero-brand-name">Safar Traders</span>
+              <span className="hero-brand-sub">Import, export, and trading support backed by R&amp;D-led sourcing.</span>
+            </h1>
+
+            <p className="hero-copy">
+              We handle all kinds of import and export requirements with research and development
+              review, supplier verification, and quality checks, so buyers receive the right material,
+              reliable grades, and high-quality supply with confidence.
+            </p>
+
+            <div className="hero-actions">
+              <RFQWizardLauncher label="Request a Quote" className="btn btn-primary btn-lg" />
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hello Safar Traders, I would like to discuss a sourcing/export requirement.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp-soft btn-lg"
+              >
+                <MessageCircle size={17} aria-hidden="true" /> WhatsApp
+              </a>
+              <Link href="/products" className="btn btn-secondary btn-lg">
+                View Capabilities
+              </Link>
+            </div>
+
           </div>
-
-          <h1 className="hero-title">
-            Sourcing and supply support for buyer-led requirements.
-          </h1>
-
-          <p className="hero-copy">
-            Safar Exports helps buyers source non-perishable industrial and commercial goods through
-            supplier coordination, quotation review, documentation support, and domestic or export
-            supply handling.
-          </p>
-
-          <div className="hero-actions">
-            <Link href="/contact" className="btn btn-primary btn-lg">
-              Request a Quote <ArrowRight size={17} aria-hidden="true" />
-            </Link>
-            <a
-              href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hello Safar Exports, I would like to discuss a sourcing/export requirement.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp-soft btn-lg"
-            >
-              <MessageCircle size={17} aria-hidden="true" /> WhatsApp
-            </a>
-            <Link href="/products" className="btn btn-secondary btn-lg">
-              View Capabilities
-            </Link>
-          </div>
-
         </div>
 
         {/* Proof strip */}
