@@ -2,8 +2,9 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, MessageCircle, FileText, PackageCheck, ChevronRight } from "lucide-react";
-import { type ProductCategory, productCategories } from "@/lib/products";
+import { catalogImages, type ProductCategory, productCategories } from "@/lib/products";
 import { siteConfig } from "@/lib/site-config";
 
 interface Props { category: ProductCategory; }
@@ -213,9 +214,19 @@ export default function ProductDetailPage({ category }: Props) {
             {category.subcategories.map((sub, i) => (
               <article key={sub.slug} className="subcat-section">
                 <div className="subcat-img-wrap">
-                  <div className="subcat-img-placeholder" aria-hidden="true">
-                    <span>{sub.name[0]}</span>
-                  </div>
+                  {catalogImages[sub.slug] ? (
+                    <Image
+                      src={catalogImages[sub.slug]}
+                      alt={`${sub.name} capability`}
+                      fill
+                      sizes="(min-width: 900px) 32vw, 100vw"
+                      className="subcat-img"
+                    />
+                  ) : (
+                    <div className="subcat-img-placeholder" aria-hidden="true">
+                      <span>{sub.name[0]}</span>
+                    </div>
+                  )}
                 </div>
                 <div className="subcat-body">
                   <span className="subcat-index">0{i + 1}</span>

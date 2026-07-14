@@ -41,6 +41,7 @@ export default function Header() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {siteConfig.nav.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+          <Link href="/company-profile" className="desktop-nav-only">Company Profile</Link>
         </nav>
 
         <div className="header-actions">

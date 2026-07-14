@@ -7,6 +7,48 @@ import customSourcingImage from "@/images/industrialsourcing.jpg";
 import machineryImage from "@/images/machine.jpg";
 import metalsAlloysImage from "@/images/metalandalloy.jpg";
 import packagingImage from "@/images/packing.jpg";
+import automationEquipmentImage from "@/images/catalog/Automation Equipment.png";
+import buildingMaterialsImage from "@/images/catalog/Building Materials.png";
+import bulkHandlingSuppliesImage from "@/images/catalog/Bulk Handling Supplies.png";
+import buyerLedRequirementsImage from "@/images/catalog/Buyer-Led Requirements.png";
+import cartonsCorrugatedPackagingImage from "@/images/catalog/Cartons & Corrugated Packaging.png";
+import commercialSupplyRequirementsImage from "@/images/catalog/Commercial Supply Requirements.png";
+import customManufacturedPartsImage from "@/images/catalog/Custom Manufactured Parts.png";
+import domesticExportSupplySupportImage from "@/images/catalog/Domestic and Export Supply Support.png";
+import electronicScrapImage from "@/images/catalog/Electronic Scrap.png";
+import engineeringMaterialsImage from "@/images/catalog/Engineering Materials.png";
+import fabricatedComponentsImage from "@/images/catalog/Fabricated Components.png";
+import fastenersImage from "@/images/catalog/Fasteners.png";
+import graniteImage from "@/images/catalog/Granite.png";
+import marbleImage from "@/images/catalog/marbel.png";
+import naturalStoneImage from "@/images/catalog/naturalstone.png";
+import heavyEquipmentImage from "@/images/catalog/Heavy Equipment.png";
+import industrialChemicalsImage from "@/images/catalog/Industrial Chemicals.png";
+import industrialHardwareImage from "@/images/catalog/Industrial Hardware.png";
+import industrialPackingMaterialsImage from "@/images/catalog/Industrial Packing Materials.png";
+import industrialToolsImage from "@/images/catalog/Industrial Tools.png";
+import manufacturingMachineryImage from "@/images/catalog/Manufacturing Machinery.png";
+import mechanicalPartsImage from "@/images/catalog/Mechanical Parts.png";
+import metalScrapImage from "@/images/catalog/Metal Scrap.png";
+import mineralsImage from "@/images/catalog/Minerals.png";
+import nonStandardProductRequestsImage from "@/images/catalog/Non-Standard Product Requests.png";
+import packagingMaterialsImage from "@/images/catalog/Packaging Materials.png";
+import paperCardboardImage from "@/images/catalog/Paper & Cardboard.png";
+import plasticPackagingImage from "@/images/catalog/Plastic Packaging.png";
+import plasticScrapImage from "@/images/catalog/Plastic Scrap.png";
+import plasticsPolymersImage from "@/images/catalog/Plastics & Polymers.png";
+import processingEquipmentImage from "@/images/catalog/Processing Equipment.png";
+import procurementCoordinationImage from "@/images/catalog/Procurement Coordination.png";
+import rubberScrapImage from "@/images/catalog/Rubber Scrap.png";
+import supplierIdentificationImage from "@/images/catalog/Supplier Identification.png";
+import aluminiumImage from "@/images/catalog/aluminium.png";
+import brassImage from "@/images/catalog/brass.png";
+import copperImage from "@/images/catalog/copper.png";
+import ferrousImage from "@/images/catalog/ferrous.png";
+import nickelAlloysImage from "@/images/catalog/image on Nickel Alloys.png";
+import nonFerrousImage from "@/images/catalog/nonferrous.png";
+import stainlessSteelImage from "@/images/catalog/stainlesssteel.png";
+import tilesImage from "@/images/catalog/tiles.png";
 
 export type ProductSubcategory = {
   slug: string;
@@ -30,6 +72,52 @@ export type ProductCategory = {
   documentation: string[];
   image: StaticImageData;
   imageAlt: string;
+};
+
+/** Detailed capability imagery supplied in /src/images/catalog. */
+export const catalogImages: Record<string, StaticImageData> = {
+  "ferrous-metals": ferrousImage,
+  "non-ferrous-metals": nonFerrousImage,
+  "stainless-steel": stainlessSteelImage,
+  aluminum: aluminiumImage,
+  copper: copperImage,
+  brass: brassImage,
+  "nickel-alloys": nickelAlloysImage,
+  "metal-scrap": metalScrapImage,
+  "plastic-scrap": plasticScrapImage,
+  "paper-cardboard": paperCardboardImage,
+  "rubber-scrap": rubberScrapImage,
+  "electronic-scrap": electronicScrapImage,
+  "manufacturing-machinery": manufacturingMachineryImage,
+  "processing-equipment": processingEquipmentImage,
+  "industrial-tools": industrialToolsImage,
+  "heavy-equipment": heavyEquipmentImage,
+  "automation-equipment": automationEquipmentImage,
+  granite: graniteImage,
+  marble: marbleImage,
+  "natural-stone": naturalStoneImage,
+  tiles: tilesImage,
+  "building-materials": buildingMaterialsImage,
+  "plastics-polymers": plasticsPolymersImage,
+  "packaging-materials": packagingMaterialsImage,
+  "industrial-chemicals": industrialChemicalsImage,
+  minerals: mineralsImage,
+  "engineering-materials": engineeringMaterialsImage,
+  "mechanical-parts": mechanicalPartsImage,
+  "fabricated-components": fabricatedComponentsImage,
+  "industrial-hardware": industrialHardwareImage,
+  fasteners: fastenersImage,
+  "custom-manufactured-parts": customManufacturedPartsImage,
+  "cartons-corrugated-packaging": cartonsCorrugatedPackagingImage,
+  "plastic-packaging": plasticPackagingImage,
+  "industrial-packing-materials": industrialPackingMaterialsImage,
+  "bulk-handling-supplies": bulkHandlingSuppliesImage,
+  "commercial-supply-requirements": commercialSupplyRequirementsImage,
+  "buyer-led-requirements": buyerLedRequirementsImage,
+  "supplier-identification": supplierIdentificationImage,
+  "procurement-coordination": procurementCoordinationImage,
+  "non-standard-product-requests": nonStandardProductRequestsImage,
+  "domestic-export-supply-support": domesticExportSupplySupportImage,
 };
 
 const standardDocuments = [

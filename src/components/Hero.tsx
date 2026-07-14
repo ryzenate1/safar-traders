@@ -2,9 +2,10 @@
 
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { FileText, Globe2, MessageCircle, SearchCheck } from "lucide-react";
+import { FileText, Globe2, Mail, MessageCircle, SearchCheck } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import RFQWizardLauncher from "@/components/RFQWizardLauncher";
+import CompanyProfileTeaser from "@/components/CompanyProfileTeaser";
 
 const proofItems = [
   { icon: SearchCheck, title: "Requirement-led sourcing", text: "Every order starts with a confirmed requirement — specification, quantity, destination, and trade terms." },
@@ -15,6 +16,7 @@ const proofItems = [
 export default function Hero() {
   return (
     <section className="hero-section" style={{ "--hero-bg": "url('/hero-bg.jpg')" } as CSSProperties}>
+      <CompanyProfileTeaser />
       <div className="container-site">
 
         <div className="hero-layout">
@@ -37,14 +39,25 @@ export default function Hero() {
 
             <div className="hero-actions">
               <RFQWizardLauncher label="Request a Quote" className="btn btn-primary btn-lg" />
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hello Safar Traders, I would like to discuss a sourcing/export requirement.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-whatsapp-soft btn-lg"
-              >
-                <MessageCircle size={17} aria-hidden="true" /> WhatsApp
-              </a>
+              <div className="btn-split">
+                <a
+                  href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hello Safar Traders, I would like to discuss a sourcing/export requirement.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-split-half btn-split-whatsapp"
+                >
+                  <MessageCircle size={17} aria-hidden="true" /> WhatsApp
+                </a>
+                <span className="btn-split-divider" aria-hidden="true" />
+                <a
+                  href={`mailto:${siteConfig.email}?subject=${encodeURIComponent("Quotation Request - Safar Traders")}&body=${encodeURIComponent(
+                    "Hello Safar Traders,\n\nI would like to request a quotation for the following requirement:\n\nProduct/Material: \nQuantity: \nDestination/Delivery Location: \nTrade Terms (FOB/CIF/etc.): \nAdditional Notes: \n\nCompany Name: \nContact Person: \nPhone: \n\nThank you."
+                  )}`}
+                  className="btn-split-half btn-split-email"
+                >
+                  <Mail size={17} aria-hidden="true" /> Email
+                </a>
+              </div>
               <Link href="/products" className="btn btn-secondary btn-lg">
                 View Capabilities
               </Link>
