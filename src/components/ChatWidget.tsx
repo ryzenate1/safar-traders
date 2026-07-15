@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { MessageCircle, X, Send, Loader2, Check } from "lucide-react";
+import { buildManualWhatsAppUrl, getSafarWhatsAppRecipient } from "@/lib/whatsapp";
 
-type ChatMessage = { role: "user" | "assistant"; content: string };
+type ChatMessage = { role: "user" | "assistant"; content: string; whatsappFallback?: boolean };
 
 const QUOTE_INTENT_PATTERNS = [
   /need\s+(\d+\s?(mt|tons?|units?|pieces?))/i,
@@ -68,18 +69,28 @@ export default function ChatWidget() {
             content:
               data.error ||
               "Please submit your requirement and our sourcing team will provide a formal quotation.",
+            whatsappFallback: data.fallback === "whatsapp" || res.status === 503 || res.status === 502,
           },
         ]);
       }
     } catch {
       setMessages((m) => [
         ...m,
-        { role: "assistant", content: "Connection issue. Please try the Request a Quote form instead." },
+        {
+          role: "assistant",
+          content: "Connection issue. You can continue on WhatsApp instead.",
+          whatsappFallback: true,
+        },
       ]);
     } finally {
       setLoading(false);
     }
   };
+
+  const whatsappUrl = buildManualWhatsAppUrl(
+    "Hello Safar Traders, I'd like help with a sourcing requirement.",
+    getSafarWhatsAppRecipient()
+  );
 
   return (
     <>
@@ -153,16 +164,46 @@ export default function ChatWidget() {
                 style={{
                   alignSelf: m.role === "user" ? "flex-end" : "flex-start",
                   maxWidth: "85%",
-                  padding: "0.625rem 0.875rem",
-                  borderRadius: "0.625rem",
-                  fontSize: "0.8125rem",
-                  lineHeight: 1.5,
-                  backgroundColor: m.role === "user" ? "var(--color-dark-bg)" : "var(--color-bg-secondary)",
-                  color: m.role === "user" ? "var(--color-dark-text)" : "var(--color-text-primary)",
-                  whiteSpace: "pre-wrap",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
                 }}
               >
-                {m.content}
+                <div
+                  style={{
+                    padding: "0.625rem 0.875rem",
+                    borderRadius: "0.625rem",
+                    fontSize: "0.8125rem",
+                    lineHeight: 1.5,
+                    backgroundColor: m.role === "user" ? "var(--color-dark-bg)" : "var(--color-bg-secondary)",
+                    color: m.role === "user" ? "var(--color-dark-text)" : "var(--color-text-primary)",
+                    whiteSpace: "pre-wrap",
+                  }}
+                >
+                  {m.content}
+                </div>
+                {m.whatsappFallback && (
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "0.375rem",
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: "#fff",
+                      backgroundColor: "#25D366",
+                      borderRadius: "0.5rem",
+                      padding: "0.625rem 0.875rem",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Continue on WhatsApp
+                  </a>
+                )}
               </div>
             ))}
             {loading && (

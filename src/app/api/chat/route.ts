@@ -3,9 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 /**
  * Sourcing assistant chat completion proxy.
  *
- * Requires ANTHROPIC_API_KEY in your environment (.env.local locally,
+ * Requires OPENROUTER_API_KEY in your environment (.env.local locally,
  * and your hosting provider's env settings in production).
- * Get a key at https://console.anthropic.com/
+ * Get a key at https://openrouter.ai/keys
+ *
+ * Optionally set OPENROUTER_MODEL to override the default model
+ * (e.g. "anthropic/claude-3.5-sonnet", "openai/gpt-4o-mini").
  */
 
 const SYSTEM_PROMPT = `You are a trade and sourcing assistant for Safar Traders, a procurement and export partner for buyers of non-perishable industrial and commercial goods.
@@ -81,15 +84,15 @@ export async function POST(req: NextRequest) {
     const clientKey = getClientKey(req);
     if (isRateLimited(clientKey)) {
       return NextResponse.json(
-        { ok: false, error: "Please wait a moment before sending more messages." },
+        { ok: false, error: "Please wait a moment before sending more messages.", fallback: "whatsapp" },
         { status: 429 }
       );
     }
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { ok: false, error: "Chat is not configured yet. Please use the Request a Quote form or WhatsApp." },
+        { ok: false, error: "Chat is not configured yet. Please use the Request a Quote form or WhatsApp.", fallback: "whatsapp" },
         { status: 503 }
       );
     }
@@ -101,35 +104,39 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "No messages provided." }, { status: 400 });
     }
 
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
+    const model = process.env.OPENROUTER_MODEL || "anthropic/claude-3.5-sonnet";
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
+        Authorization: `Bearer ${apiKey}`,
+        // Optional but recommended by OpenRouter for analytics/rankings.
+        "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL || "https://safartraders.com",
+        "X-Title": "Safar Traders Sourcing Assistant",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-6",
+        model,
         max_tokens: 500,
-        system: SYSTEM_PROMPT,
-        messages: normalizedMessages,
+        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...normalizedMessages],
       }),
     });
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error("Anthropic API error:", errText);
+      console.error("OpenRouter API error:", errText);
       return NextResponse.json(
-        { ok: false, error: "The assistant is temporarily unavailable. Please try the Request a Quote form." },
+        {
+          ok: false,
+          error: "The assistant is temporarily unavailable. Please try the Request a Quote form or WhatsApp.",
+          fallback: "whatsapp",
+        },
         { status: 502 }
       );
     }
 
     const data = await response.json();
-    const text = data.content
-      ?.map((block: { type: string; text?: string }) => (block.type === "text" ? block.text : ""))
-      .filter(Boolean)
-      .join("\n");
+    const text = data.choices?.[0]?.message?.content ?? "";
 
     return NextResponse.json({ ok: true, reply: text || "" });
   } catch (err) {
